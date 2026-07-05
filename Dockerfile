@@ -8,11 +8,9 @@ ENV PYTHONUNBUFFERED=1
 # Set the working directory
 WORKDIR /app
 
-# Install system dependencies if required, clear apt cache to keep image size small
+# Install system dependencies (curl is needed for healthcheck)
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
     curl \
-    software-properties-common \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements file first to leverage Docker cache

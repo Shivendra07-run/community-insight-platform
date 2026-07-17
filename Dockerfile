@@ -24,6 +24,7 @@ COPY . /app/
 
 # Create a non-privileged user and switch to it for better security posture
 RUN useradd -u 8888 appuser && chown -R appuser:appuser /app
+RUN mkdir -p /home/appuser && chown -R appuser:appuser /home/appuser
 USER appuser
 
 # Expose port 8080 for Google Cloud Run
